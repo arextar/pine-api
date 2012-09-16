@@ -1,6 +1,6 @@
 # Achievements
 
-## pine.getAchievements(query)
+## pine.getAchievements([query])
 Returns an array containing instances of pine.Achievement satisfying `query`.
 
 Query:
@@ -13,10 +13,14 @@ var achieves = pine.getAchievements({
 ````
 
 ## pine.getAchievement(slug)
-Retruns an instance of pine.Achievement
+Retruns an instance of pine.Achievement corresponding to the passed `slug`
+
+````js
+var achieve = pine.getAchievement('kill_10_zombies')
+````
 
 ## Class: pine.Achievement
-Represents an achievement as defined in a JSON file read by Pine
+Represents an [achievement](https://github.com/jeremyckahn/pine/wiki/Achievements)
 
 ## achieve.title
  * String
@@ -40,3 +44,20 @@ The goal the achievement must reach to be complete
 
 ## achieve.complete()
 Returns true if progress >= goal, false otherwise
+
+## achieve.incr([amount][, options])
+  * amount: Amount to increment the progress of the achievement by, defaults to 1.
+  * options: See [Achievement method options](#achievementmethodoptions)
+Increments the progress of the achievement by the given `amount`.
+
+## achieve.set(amount[, options])
+  * amount: Amount to set the progress of the achievement to, defaults to 1.
+  * options: See [Achievement method options](#achievementmethodoptions)
+Sets the progress of the achievement to the given `amount`.
+
+## achieve.unlock([options])
+  * options: See [Achievement method options](#achievementmethodoptions)
+Sets the progress of the achievement to the goal, completing it.
+
+## Achievement method options
+ * notify: if this option is not set to `false` and the method called caused it to become completed, a native notification for the achievement will appear. Defaults to `true`.
