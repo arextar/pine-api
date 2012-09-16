@@ -5,7 +5,7 @@
 Returns an array containing instances of pine.Achievement satisfying `query`.
 
 Query:
- * complete: A boolean that if false, returns incomplete achievements, and if true, returns complete ones.
+ * complete: A boolean that if false, returns incomplete achievements and if true, returns complete ones.
 
 ````js
 var achieves = pine.getAchievements({
@@ -78,4 +78,8 @@ Sets the progress of the achievement to the goal, completing it.
 
 
 ## Achievement method options
- * notify: if this option is not set to `false` and the method called caused an achievement to become completed, a native notification for the achievement will appear. Defaults to `true`.
+ * notify: if this option is not set to false and the method called caused an achievement to become completed, the 'achievement' event will not be triggered and no native notification will appear. Defaults to true.
+
+
+## pine.on('achievement', function (achieve))
+Triggered whenever an achievement is completed. Binding to this event will prevent native notification (such as a message in the corner of the screen)
