@@ -52,3 +52,15 @@ Triggers whenever...
   * type = "offline"
  * a new friend is added
   * type = "new"
+
+````js
+pine.on('friend', function (type, user) {
+  if (type === 'new') {
+    add_user(user)
+  }
+  else
+  {
+    update_user(user.name, user.online)
+  }
+})
+````
