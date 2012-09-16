@@ -47,16 +47,16 @@ Returns true if progress >= goal, false otherwise
 
 ## achieve.incr([amount][, options])
   * amount: Amount to increment the progress of the achievement by, defaults to 1.
-  * options: See [Achievement method options](#achievementmethodoptions)
+  * options: See [Achievement method options](#achievement-method-options)
 Increments the progress of the achievement by the given `amount`.
 
 ## achieve.set(amount[, options])
   * amount: Amount to set the progress of the achievement to, defaults to 1.
-  * options: See [Achievement method options](#achievementmethodoptions)
+  * options: See [Achievement method options](#achievement-method-options)
 Sets the progress of the achievement to the given `amount`.
 
 ## achieve.unlock([options])
-  * options: See [Achievement method options](#achievementmethodoptions)
+  * options: See [Achievement method options](#achievement-method-options)
 Sets the progress of the achievement to the goal, completing it.
 
 ## Achievement method options
