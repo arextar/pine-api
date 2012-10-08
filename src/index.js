@@ -5,8 +5,9 @@ function Pine (options, callback) {
 
 	ws.emit('init', options, function (data) {
 		for (var x in data) {
-			that[x + '_data'] = data[x]
+			that[x + '_data'] = data[x];
 		}
+		callback(that);
 	})
 }
 
