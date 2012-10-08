@@ -1,4 +1,5 @@
 function Achievement (data, parent) {
+	this.slug = data.slug;
 	this.title = data.title;
 	this.desc = data.desc;
 	this.icon = data.icon;
@@ -9,7 +10,7 @@ function Achievement (data, parent) {
 }
 
 Achievement.prototype = {
-	complete: function () {
+	isComplete: function () {
 		return this.progress => this.goal;
 	},
 
@@ -23,19 +24,28 @@ Achievement.prototype = {
 
 		if (this.progress < this.goal) this.progress += amount;
 
-		if (this.progress >= this.goal && (!options || options.notify !== false)) this.parent_pine.emit('achievement', this)
+		if (this.progress >= this.goal && (!options || options.notify !== false)) this.parent_pine.emit('achievement', this);
+		this.ws.emit('set_achievement', this.slug, this.progress);
 	},
 
 	set: function (amount, options) {
 		// Constrain the amount
 		this.progress = amount < 0 ? 0 : amount > this.goal ? this.goal : amount;
 
-		if (this.progress >= this.goal && (!options || options.notify !== false)) this.parent_pine.emit('achievement', this)
+		if (this.progress >= this.goal && (!options || options.notify !== false)) this.parent_pine.emit('achievement', this);
+		this.ws.emit('set_achievement', this.slug, this.progress);
+	},
+
+	unlock: function (options) {
+		this.progress = this.goal;
+
+		if (!options || options.notify !== false) this.parent_pine.emit('achievement', this);
+		this.ws.emit('set_achievement', this.slug, this.progress);
 	}
 };
 
 pine_fn.Achievement = Achievement;
 
 pine_fn.getAchievement = function (name) {
-	return new Achievement(this.data.achievements_data[name], this)
-}
+	return new Achievement(this.data.achievements_data[name], this);
+};
