@@ -61,7 +61,7 @@ The progress toward the goal of the achievement
 The goal the achievement must reach to be complete
 
 
-## achieve.complete()
+## achieve.isComplete()
 Returns true if progress >= goal, false otherwise
 
 
