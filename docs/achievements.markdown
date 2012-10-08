@@ -26,6 +26,11 @@ var achieve = pine.getAchievement('kill_10_zombies')
 Represents an [achievement](https://github.com/jeremyckahn/pine/wiki/Achievements)
 
 
+## achieve.slug
+ * String
+ 
+A string with which to identify the achievement
+
 ## achieve.title
  * String
  
