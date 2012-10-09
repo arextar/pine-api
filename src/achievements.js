@@ -11,7 +11,7 @@ function Achievement (data, parent) {
 
 Achievement.prototype = {
 	isComplete: function () {
-		return this.progress => this.goal;
+		return this.progress >= this.goal;
 	},
 
 	incr: function (amount, options) {
